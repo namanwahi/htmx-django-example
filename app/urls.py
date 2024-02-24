@@ -13,10 +13,15 @@ urlpatterns = [
         views.LoginView.as_view(template_name="login.html"),
         name="login",
     ),
+    path("posts/", views.post_list_view, name="posts"),
 ]
 
 
-htmx_urlpatterns = [path("check_email/", views.check_email, name="check_email")]
+htmx_urlpatterns = [
+    path("check_email/", views.check_email, name="check_email"),
+    path("add_post/", views.add_post, name="add_post"),
+    path("delete_post/<int:post_id>/", views.delete_post, name="delete_post"),
+]
 
 
 urlpatterns += htmx_urlpatterns

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div>
+        <p class>My posts</p>
+    </div>
+
+    <div id="post_list">
+        {% include 'partials/post_list.html' %}
+    </div>
+
+    <hr/>
+
+    <div>
+        <form>
+            {% csrf_token %}
+            {{ form }}
+            <button hx-post={% url 'app:add_post' %} hx-target="#post_list" type="submit">Add post</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% for post in posts %}
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <p>Author: {{ post.user }}</p>
+        <button hx-delete="{% url 'app:delete_post' post.id %}" hx-target="#post_list" hx-confirm="are you sure?">Delete</button>
+    </div>
+{% empty %}
+    <p>No posts available.</p>
+{% endfor %}
