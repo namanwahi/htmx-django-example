@@ -11,7 +11,9 @@
         <div class="form-group mb-3">
             <label>{{ form.email.label_tag }}</label>
             {{ form.email.errors }}
-            {% render_field form.email class="form-control" %}
+            {% url 'app:check_email' as check_email_url %}
+            {% render_field form.email class="form-control" type="email" hx-post=check_email_url hx-triggers="keyup" hx-target="#username-error" %}
+            <div id='username-error'></div>
 
             <label>{{ form.password1.label_tag }}</label>
             {{ form.password1.errors }}
